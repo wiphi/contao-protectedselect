@@ -22,3 +22,8 @@ $GLOBALS['TL_FFL']['protectedselect'] = 'FormProtectedSelectMenu';
  * Backend form fields
  */
 $GLOBALS['BE_FFL']['protectedOptionWizard'] = 'ProtectedOptionWizard';
+
+$GLOBALS['BE_MOD']['content']['form'][] = array(
+    //'tables'      => array('tl_form', 'tl_form_field'),
+    'protectedoption'      => array('contao.controller.backend_csv_import', 'importProtectedOptionWizardAction')
+);

@@ -27,5 +27,23 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['protectedOptions'] = array
     'exclude'                 => true,
     'inputType'               => 'protectedOptionWizard',
     'eval'                    => array('mandatory'=>true),
+    'xlabel' => array
+    (
+        array('tl_form_field_protectedoptions', 'protectedOptionImportWizard')        
+    ),
     'sql'                     => "blob NULL",
 );
+
+class tl_form_field_protectedoptions extends tl_form_field
+{
+	/**
+	 * Add a link to the option items import wizard
+	 *
+	 * @return string
+	 */
+	public function protectedOptionImportWizard()
+	{
+		return ' <a href="' . $this->addToUrl('key=protectedoption') . '" title="' . specialchars($GLOBALS['TL_LANG']['MSC']['ow_import'][1]) . '" onclick="Backend.getScrollOffset()">' . Contao\Image::getHtml('tablewizard.svg', $GLOBALS['TL_LANG']['MSC']['ow_import'][0]) . '</a>';
+	}
+
+}
